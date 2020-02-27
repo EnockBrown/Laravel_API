@@ -15,7 +15,7 @@
     <div class="panel-body">
         <table class="table table-bordered">
                 <tr>
-                <!-- <th></th> -->
+                <th>Cover Image</th>
                 <th>User ID</th>
                 <th>First Name</th>
                 <th>Middle Name</th>
@@ -28,6 +28,11 @@
                     @if (count($users) > 0)
                         @foreach ($users as $user )
                             <tr>
+                                    <td>
+                                        <div class="col-md-4 col-sm-4">
+                                            <img style="width:100%;height:100%" src="/storage/storage/images/{{$user->cover_image}}"/>
+                                        </div>
+                                    </td>
                                     <td>{{$user->user_id}}</td>
                                     <td>{{$user->first_name}}</td>
                                     <td>{{$user->middle_name}}</td>
@@ -46,6 +51,7 @@
                                         </button>
                                     </div>
                                     </td>
+
                             </tr>
                         @endforeach
 
