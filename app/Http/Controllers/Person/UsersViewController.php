@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Person;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customers;
 use Illuminate\Http\Request;
 
 class UsersViewController extends Controller
@@ -14,7 +15,9 @@ class UsersViewController extends Controller
      */
     public function index()
     {
-        return view('pages.Users');
+
+       $users=Customers::orderBy('created_at','desc')->paginate(2);
+       return view('pages.Users')->with('users',$users);
     }
 
     /**
