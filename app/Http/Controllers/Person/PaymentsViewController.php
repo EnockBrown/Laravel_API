@@ -94,7 +94,8 @@ class PaymentsViewController extends Controller
            $amount =$payment->amount;
            $status ="CONFIRMED";
            $paid_On =$payment->created_at;
-           $updated_on=   strlen(date('d/m/Y H:i:s'));
+         //  $updated_on=   strlen(date('d/m/Y H:i:s'));
+           $updated_on=   "2020-02-27 16:15:49";
 
            $UpdatePayment= Payment::find($id);
            $UpdatePayment -> product_name =$name;

@@ -24,7 +24,7 @@
                             <th>Amount</th>
                             <th>Status</th>
                             <th >Payment On</th>
-                            <th bgcolor=" #00ff00">Confirmed On</th>
+                            <th >Confirmed On</th>
                             <th>Confirm</th>
                             <th>Delete</th>
                         </tr>
@@ -36,15 +36,16 @@
                                             <th><small>{{$payment->payment_id}}</small></th>
                                             <th><small><b></b>{{$payment->customer_id}}</small></th>
                                             <th><small><b>Ksh.</b>{{$payment->amount}}</small></th>
-                                            <th><small><b>{{$payment->status}}</b></small></th>
-                                            <th ><small>Payed On: {{$payment->created_at}}</small></th>
-                                            <th bgcolor=" #00ff00"><small><b>Confirmed On: {{$payment->updated_at}}</b></small></th>
+                                            <th><small><b><strong class="btn btn-outline-success">{{$payment->status}}</strong></b></small></th>
+                                            <th ><small><strong>Payed On: </strong>{{$payment->created_at}}</small></th>
+                                            <th ><small><strong><b>Confirmed On:</strong> {{$payment->updated_at}}</b></small></th>
                                             <th><small>
 
                                                 {!!Form::open(['action' => ['Person\PaymentsViewController@update', $payment->id],'method' => 'PUT'])!!}
                                                     {{Form::hidden('method', 'PUT')}}
                                                     {{ Form::submit('Confirm', ['class' => 'btn btn-info'])}}
-                                                {!! Form::close() !!}</small>
+                                                {!! Form::close() !!}
+                                               </small>
                                             </th>
                                             <th><small>
                                                        {!!Form::open(['action' => ['Person\PaymentsViewController@destroy', $payment->id],'method' => 'DELETE'])!!}
@@ -56,7 +57,7 @@
                                 @endforeach
 
                          @else
-                                <p>NO PRODUCTS</p>
+                                <p class="btn btn-outline-danger"><strong>NO PAYMENTS AVAILABLE !!!</strong></p>
                         @endif
                     </table>
                     {{$payments->links()}}
