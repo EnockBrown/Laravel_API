@@ -88,6 +88,7 @@ class UsersController extends Controller
                   $product -> unique_id =$unique_id;
                   $product -> country =$request->input('country');
                   $product -> cover_image =$fileNameToStore;
+                  $product->verified=0;
                   $product->save();
                 //   $product -> stock =$request->input('stock');
                 //   $product -> product_link = $fileNameToStore;

@@ -26,6 +26,7 @@ class UserResource extends JsonResource
             'user_email'=> $this -> user_email,
             'unique_id'=> $this -> unique_id,
             'country'=> $this -> country,
+            'verified'=>$this-> verified,
             'cover_image'=> $this -> cover_image,
             'base_url'=>$absurl
         ];

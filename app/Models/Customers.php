@@ -15,6 +15,7 @@ class Customers extends Model
         'user_email',
         'unique_id',
         'country',
+        'verified',
         'cover_image',
     ];
 }

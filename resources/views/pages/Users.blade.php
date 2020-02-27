@@ -2,13 +2,23 @@
 
 @section('content')
 
+<div class="panel panel-heading">
+    <h3 class="btn btn-primary btn-lg btn-block">Registered Customers</h3>
+</div>
+
+<a class="navbar-brand" href="{{ url('/home') }}">
+    <button type="button" class="btn btn-outline-secondary">Dahboard</button>
+</a>
+<a class="navbar-brand" href="{{ url('/home') }}">
+    <button type="button" class="btn btn-outline-secondary">Back</button>
+</a>
     <div class="panel-body">
         <table class="table table-bordered">
                 <tr>
                 <!-- <th></th> -->
-                <th>ID</th>
                 <th>User ID</th>
                 <th>First Name</th>
+                <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>Contact</th>
                 <th>Email</th>
@@ -53,33 +63,34 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" ><b>Edit User</b></h4>
+                <h4 class="modal-title" ><b>Verify Customer</b></h4>
                 </div>
                 <div class="modal-body">
                 <form role="form" action="/edit_user">
-                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                    <div class="box-body">
+                    {{ Form::open(['action' => ['Person\ProductsViewController@update', $user->user_id] , 'method' =>'POST','enctype'=>'multipart/form-data']) }}
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">User ID</label>
-                        <input type="text" class="form-control" name="user_id" placeholder="User ID" >
+                     {{Form::label('product_name', 'Product Name')}}
+                     {{Form::text('product_name', $user->first_name,['class' => 'form-control','placeholder' =>'Product Name'])}}
                     </div>
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Username</label>
-                        <input type="text" class="form-control" name="username" placeholder="Enter username">
+                        {{Form::label('product_price', 'Product Price')}}
+                        {{Form::text('product_price', $user->last_name,['class' => 'form-control','placeholder' =>'Ksh.5000'])}}
                     </div>
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="Enter email">
+                        {{Form::label('stock', 'Stock ')}}
+                        {{Form::text('stock', $user->country,['class' => 'form-control','placeholder' =>'Example 400 in Stock'])}}
                     </div>
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Contact</label>
-                    <input type="text" class="form-control" name="contact" value="{{ Auth::id()}}"placeholder="Enter contact">
+                        {{Form::file('image')}}
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Change Password</label>
-                        <input type="password" class="form-control" name="change_password" placeholder="Enter password">
-                    </div>
-                    </div>
+                    {{ Form::hidden('_method','PUT') }}
+                    {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+
+                {{ Form::close() }}
                     <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
