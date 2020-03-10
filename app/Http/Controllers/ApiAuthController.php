@@ -26,8 +26,11 @@ class ApiAuthController extends Controller
             // $input = $request->all();
             $request['password'] = bcrypt($request['password']);
             $user = User::create($request->all());
-            $success['token'] =  $user->createToken('AppName')->accessToken;
-            return response()->json(['success'=>$success], $this->successStatus);
+            $success =  $user->createToken('AppName')->accessToken;
+            return response()->json([
+                'error'=>'false',
+                'token'=>$success],
+                $this->successStatus);
         // }
     }
 

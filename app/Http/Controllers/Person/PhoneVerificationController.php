@@ -82,7 +82,9 @@ class PhoneVerificationController extends Controller
         'verified'=>0,
        ]);
 
-       return response()->json(['success'=>$verify]);
+       return response()->json([
+        'error'=>'False',
+        'message'=>'Code Send']);
     }
 
     /**
@@ -116,6 +118,7 @@ class PhoneVerificationController extends Controller
      */
     public function update(Request $request,$id)
     {
+        //return 123;
 
         $request->validate([
             'verification_code' =>'required',
