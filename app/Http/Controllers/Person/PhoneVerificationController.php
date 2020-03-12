@@ -142,21 +142,20 @@ class PhoneVerificationController extends Controller
             $UpdatedVerification -> verification_code =$verification_code;
             $UpdatedVerification -> verified =$verified;
             $UpdatedVerification->save();
-            $message=[
+            // $message=[
+            //     'error'=>'false',
+            //     'message' => 'Phone Number Verified'];
+            return [
                 'error'=>'false',
-                'message' => 'Phone Number Verified'];
-            // return [
-            //     'error'=>'false',
-            //     'message' => 'Phone Number Verified'
-            // ];
-            // return response()->json(['data'=>
-            //     'error'=>'false',
-            //     'message' => 'Phone Number Verified',]);
-                  return response()->json(['data' => $message]);
+                'message' => 'Phone Number Verified'
+            ];
+            // // return response()->json(['data'=>
+            // //     'error'=>'false',
+            // //     'message' => 'Phone Number Verified',]);
+            //       return response()->json(['data' => $message]);
         }
         else{
             return response()->json([
-                'error'=>'true',
                 'message' => 'Verification Code is invalid',]);
         }
         // return [
